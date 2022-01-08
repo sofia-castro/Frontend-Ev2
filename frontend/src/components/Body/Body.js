@@ -18,14 +18,39 @@ class Body extends Component {
           const productos = res.data;
           this.setState({productos});
         })
-      }
+      };
+
+      getData = () => {
+        axios.get('http://localhost:8080/productos/').then(res => {
+          const productos = res.data;
+          this.setState({productos});
+        })
+      };
+
+      deleteData = (id)=>{
+        axios.delete(`http://localhost:8080/productos/${id}`)
+        .then(() => {
+          axios.get('http://localhost:8080/productos/');
+         })
+        };
+    
+        deleteProducto(id,){
+          console.log(id);
+          axios.delete("http://localhost:8080/productos/" + id)
+          .then(res => {
+            console.log(res);
+            window.location.reload(true);
+          })
+        };
 
     render() {
+      
       const {productos} = this.state;
+
       return (
         <Row className = "row" xs={1} md={4}>
        { productos.map(producto =>
-       <Col className = "col">
+       <Col key='producto.id'  className = "col">
         <Card border="info" style={{ width: '18rem'}}>
         <Card.Header>Codigo: {producto.codigo}</Card.Header>
         <Card.Body>
@@ -37,7 +62,7 @@ class Body extends Component {
             <br></br>
             Caducidad: {producto.fecha_v} 
           </Card.Text>
-         < Button  variant = 'outline-info' >Borrar producto</Button>
+         < Button variant = 'outline-info' type='submit' onClick={(e) => this.deleteProducto(producto.id,e)}>Borrar producto</Button>
         </Card.Body>
       </Card>
       </Col>
@@ -47,4 +72,4 @@ class Body extends Component {
     }
   }
   
-  export default Body;
+export default Body;

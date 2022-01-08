@@ -1,7 +1,7 @@
 export const MenuItems = [
     {
         title: 'Ingresar Productos',
-        url:'#',
+        url:'/IngresarProducto',
         cName: 'nav-links'
     }
 ]
