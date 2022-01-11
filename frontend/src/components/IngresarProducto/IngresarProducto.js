@@ -26,7 +26,7 @@ class IngresarProducto extends Component{
     IngresarProducto = (e) =>{
         e.preventDefault()
         console.log(this.state);
-        axios.post('http://localhost:8080/productos/create', this.state).then(response => {
+        axios.post('http://localhost:8081/productos/create', this.state).then(response => {
             console.log(response);
             window.location.reload(false);
         })

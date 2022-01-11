@@ -14,29 +14,29 @@ class Body extends Component {
       };
     
       componentDidMount() {
-        axios.get('http://localhost:8080/productos/').then(res => {
+        axios.get('http://localhost:8081/productos/').then(res => {
           const productos = res.data;
           this.setState({productos});
         })
       };
 
       getData = () => {
-        axios.get('http://localhost:8080/productos/').then(res => {
+        axios.get('http://localhost:8081/productos/').then(res => {
           const productos = res.data;
           this.setState({productos});
         })
       };
 
       deleteData = (id)=>{
-        axios.delete(`http://localhost:8080/productos/${id}`)
+        axios.delete(`http://localhost:8081/productos/${id}`)
         .then(() => {
-          axios.get('http://localhost:8080/productos/');
+          axios.get('http://localhost:8081/productos/');
          })
         };
     
         deleteProducto(id,){
           console.log(id);
-          axios.delete("http://localhost:8080/productos/" + id)
+          axios.delete("http://localhost:8081/productos/" + id)
           .then(res => {
             console.log(res);
             window.location.reload(true);
@@ -46,10 +46,10 @@ class Body extends Component {
     render() {
       
       const {productos} = this.state;
-
+      const disponibles = productos.filter(producto => producto.deleted === false);
       return (
         <Row className = "row" xs={1} md={4}>
-       { productos.map(producto =>
+       { disponibles.map(producto =>
        <Col key='producto.id'  className = "col">
         <Card border="info" style={{ width: '18rem'}}>
         <Card.Header>Codigo: {producto.codigo}</Card.Header>
