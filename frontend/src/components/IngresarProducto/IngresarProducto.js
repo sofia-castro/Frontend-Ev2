@@ -105,7 +105,7 @@ class IngresarProducto extends Component{
                 </Row>
                 <Row className="justify-content-center">
                  <div className="col-md-2">
-                   <Button type="submit" variant='outline-info'>Ingresar Producto</Button>
+                   <Button name="botonIngresar" type="submit" variant='outline-info'>Ingresar Producto</Button>
                 </div>
                 </Row >
             </form>

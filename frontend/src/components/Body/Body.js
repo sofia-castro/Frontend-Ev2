@@ -62,7 +62,7 @@ class Body extends Component {
             <br></br>
             Caducidad: {producto.fecha_v} 
           </Card.Text>
-         < Button variant = 'outline-info' type='submit' onClick={(e) => this.deleteProducto(producto.id,e)}>Borrar producto</Button>
+         < Button id = 'botonDelete' variant = 'outline-info' type='submit' onClick={(e) => this.deleteProducto(producto.id,e)}>Borrar producto</Button>
         </Card.Body>
       </Card>
       </Col>
