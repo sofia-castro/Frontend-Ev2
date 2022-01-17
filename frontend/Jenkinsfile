@@ -12,7 +12,7 @@ node{
       }
 
       stage("Build Docker") {
-          dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend"){
+          dir("/var/lib/jenkins/workspace/TingesoFrontend"){
               sh 'docker build -t frontend .'
           }
       }
