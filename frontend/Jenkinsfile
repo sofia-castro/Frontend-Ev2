@@ -1,17 +1,8 @@
 node{
-    def directory ="frontend/src/testSelenium.test.js"
       stage("Cloning Repository"){
         checkout scm
       }
-         stage('Selenium Test') {
-              echo 'executing Tests'
-              codeCheckoutOnNode(env.NodeName,directory, '*/' + env.BranchName)
-              node(env.NodeName){
-                  dir(directory) {
-                    executeTest();
-                  }
-              }
-          }
+         
       stage('Selenium') {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
@@ -21,7 +12,7 @@ node{
       }
 
       stage("Build Docker") {
-          dir("/var/lib/jenkins/workspace/TingesoFrontend"){
+          dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend"){
               sh 'docker build -t frontend .'
           }
       }
