@@ -9,6 +9,9 @@
     "axios": "^0.24.0",
     "bootstrap": "5.1",
     "chromedriver": "^97.0.0",
+    "gradle": "^1.2.4",
+    "maven": "^5.0.0",
+    "mvn": "^3.5.0",
     "react": "^17.0.2",
     "react-bootstrap-validation": "^0.1.11",
     "react-cookie": "^4.1.1",
@@ -25,7 +28,8 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bootJar":"bootJar"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +48,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "bootJar": {    
+    "baseName": "SpringBoot",
+    "version" :  "0.0.1"
+}
 }
