@@ -6,6 +6,7 @@ node{
       stage('Selenium') {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
+                        sh 'npm install'
                         sh 'npm test a'
                     }
           }
