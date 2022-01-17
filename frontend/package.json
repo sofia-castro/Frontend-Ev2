@@ -10,6 +10,7 @@
     "bootstrap": "5.1",
     "chromedriver": "^97.0.0",
     "gradle": "^1.2.4",
+    "jenkins": "^0.28.1",
     "maven": "^5.0.0",
     "mvn": "^3.5.0",
     "react": "^17.0.2",
