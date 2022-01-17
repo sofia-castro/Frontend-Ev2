@@ -3,10 +3,9 @@ node{
         checkout scm
       }
       stage('SonarQube analysis') {
-    			def scannerHome = tool 'sonarQube Scanner 4.6.2.2472';
 				dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
 					withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
-                     sh "${scannerHome}/bin/sonar-scanner"
+                     sh "npm run sonarqube"
     					}
 				
 			  }
