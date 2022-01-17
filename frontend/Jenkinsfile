@@ -6,7 +6,6 @@ node{
     			
 				dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
 					withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
-                        sh 'chmod 777 ./gradlew'
                         sh './gradlew sonarqube'
     					}
 				
