@@ -2,8 +2,18 @@ node{
       stage("Cloning Repository"){
         checkout scm
       }
+      stage('SonarQube analysis') {
+    			
+				dir("/var/lib/jenkins/workspace/Tingeso/demo") {
+					withSonarQubeEnv('sonarqube') { // Will pick the global server connection you have configured
+                        sh 'chmod 777 ./gradlew'
+                        sh './gradlew sonarqube'
+    					}
+				
+			  }
+  		}
          
-      stage('Selenium Test') {
+     /* stage('Selenium Test') {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
                         sh 'npm install react-scripts'
@@ -37,7 +47,7 @@ node{
         sh 'docker logout'
       }
       
-      /*stage("Run") {
+      stage("Run") {
         timeout(time: 80, unit: 'SECONDS') {
            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
               sh 'docker run -i -p 8081:8081 demo'

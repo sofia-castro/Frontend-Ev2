@@ -22,6 +22,7 @@
     "reactstrap": "^8.10.0",
     "selenium-webdriver": "^4.1.1",
     "sonarqube": "^0.0.1",
+    "sonarqube-scanner": "^2.8.1",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
@@ -29,7 +30,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
