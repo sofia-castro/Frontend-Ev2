@@ -12,7 +12,9 @@ node{
       }
 
       stage("Build Docker") {
-          sh """ docker build --build-arg JAR_FILE=build/libs/\\*.jar -t frontend ."""
+          dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend"){
+              sh 'docker build -t frontend .'
+          }
       }
 
       stage('Login DockerHub'){
