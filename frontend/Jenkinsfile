@@ -3,7 +3,7 @@ node{
         checkout scm
       }
          
-      stage('Selenium') {
+      stage('Selenium Test') {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
                         sh 'npm install react-scripts'
