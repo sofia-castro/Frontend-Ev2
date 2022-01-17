@@ -1,0 +1,45 @@
+node{
+      stage("Cloning Repository"){
+        checkout scm
+      }
+
+      stage('Selenium') {
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend") {
+                        sh 'npm test testSelenium'
+                    }
+          }
+      }
+
+      stage("Build Docker") {
+          sh """ docker build --build-arg JAR_FILE=build/libs/\\*.jar -t frontend ."""
+      }
+
+      stage('Login DockerHub'){
+        withCredentials([usernamePassword(credentialsId: 'dockerHub', usernameVariable: 'HUB_USER', passwordVariable: 'HUB_TOKEN')]) {                      
+                    sh '''
+                        docker login -u $HUB_USER -p $HUB_TOKEN 
+                    '''
+        }
+      }
+
+      stage('Push Docker'){
+        dir("/var/lib/jenkins/workspace/TingesoFrontend/frontend"){
+          sh 'docker tag frontend franciscavera/frontend-ev2:latest' 
+          sh 'docker push franciscavera/frontend-ev2:latest'
+        }
+      }
+
+      stage('Logout DockerHub'){
+        sh 'docker logout'
+      }
+      
+      /*stage("Run") {
+        timeout(time: 80, unit: 'SECONDS') {
+           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+              sh 'docker run -i -p 8081:8081 demo'
+           }
+        }
+      }
+      */
+}
