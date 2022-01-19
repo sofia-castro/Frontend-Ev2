@@ -8,7 +8,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavbarItems">
-        <a href = "/"> <h1 className="navbar-logo nav-links"> Store-T </h1> </a>
+        <a href = "/"> <h1 className="navbar-logo nav-links"> Store-T(2022) </h1> </a>
         <ul className={this.state.clicked ? 'nav-menu active': 'nav-menu'}>
           {MenuItems.map((item, index) => {
             return (
